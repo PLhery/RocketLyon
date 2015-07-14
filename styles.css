@@ -1,0 +1,220 @@
+	/*General things*/
+    html, body {
+	  font-family: 'Roboto', 'Helvetica', sans-serif;
+	}
+	.mdl-layout__header .mdl-layout__drawer-button {
+	  color: rgba(0, 0, 0, 0.54);
+	}
+	.mdl-grid {
+	  max-width: 1080px;
+	}
+
+    .mdl-card__subtitle-text {
+        margin-left: 5px;
+    }
+
+	/* Stop information */
+
+        /*Letter and number, like T1, bus42, MD etc..*/
+        .nomTransport .lettre,.numero{
+            height:23px;
+            width:23px;
+            display:inline-block;
+            color:white;
+            font-size:20px;
+            line-height:22px;
+            font-weight:700;
+            font-family: 'Lato', sans-serif;
+            margin-right:3px;
+            vertical-align:middle;
+        }
+        .nomTransport .lettre {
+            width:29px;
+            background-color:#E30613;
+            border-top-left-radius: 4px 15px;
+            border-bottom-left-radius: 4px 15px;
+            text-align:center;
+        }
+        .nomTransport .lettre.bus {
+            font-size:13px;
+        }
+
+        .nomTransport .numero {
+            background-color:#883F98;
+            text-align:center;
+        }
+        .nomTransport .numero.bus {
+            width:36px;
+            background-color:#6D6E71;
+        }
+        .nomTransport .numero.bus.secondaire {
+            box-sizing:border-box;
+            background-color:initial;
+            border:1px solid #E30613;
+            color:#E30613;
+            line-height: 21px;
+        }
+
+        /*Title and alignment*/
+        .indicationsTransport{
+            display:flex;
+        }
+        .nomTransport {
+            flex:1;
+            white-space: nowrap;
+            overflow:hidden;
+        }
+
+        .indicationsTransport h4 {
+            font-size:18px;
+            display:inline-block;
+            margin:5px 0;
+            vertical-align:middle;
+        }
+
+        /* Wait before next train in minutes */
+        .numberCircle {
+            border-radius: 50%;
+
+            width: 18px;
+            height: 18px;
+            padding: 4px;
+
+            background: #fff;
+            border: 1px solid #666;
+            color: #666;
+            text-align: center;
+            display:inline-block;
+            vertical-align: middle;
+
+            font-size: 16px;
+        }
+
+        .numberCircle.bold {
+            border: 2px solid #666;
+            text-align: center;
+            font-weight:700;
+        }
+        .numberCircle.heure {
+            font-size: 8px;
+            padding-left: 3px;
+            padding-right: 5px;
+        }
+        .numberCircle .material-icons {
+            font-size: 18px;
+        }
+        .attente {
+            margin-top:7px;
+        }
+
+
+
+    /* Google Maps popup/infowindow styling*/
+
+    .infowindow{
+        display:flex;
+    }
+    .nomTransport {
+        white-space: nowrap;
+        overflow:hidden;
+    }
+
+    .infowindow  h4 {
+        font-size:15px;
+        display:inline-flex;
+        margin:5px;
+        vertical-align:middle;
+    }
+
+    .infowindow .numberCircle {
+        width: 14px;
+        height: 14px;
+        padding: 3px;
+        font-size: 12px;
+    }
+
+    .infowindow .numberCircle.heure {
+        font-size: 6px;
+        padding-left: 2px;
+        padding-right: 4px;
+    }
+    .infowindow  .numberCircle .material-icons {
+        font-size: 15px;
+    }
+
+
+	
+	/*drawer*/
+	
+	.drawer-icon {
+	  width: 48px;
+	  height: 48px;
+	  margin-left:40px;
+	  margin-top:30px;
+  }
+  
+  .drawer-title {
+	  line-height:40px!important;
+	  margin-bottom:16px;
+  }
+  
+  .navbar-icon {
+		width: 40px;
+		height: 40px;
+		margin-right:10px;
+  }
+
+  .mdl-layout__drawer {
+	border:0;
+  }
+  
+  .drawer-navigation {
+	  -webkit-box-flex: 1;
+	  -webkit-flex-grow: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+	}
+	.drawer-navigation .mdl-navigation__link {
+	  display: -webkit-box !important;
+	  display: -webkit-flex !important;
+	  display: -ms-flexbox !important;
+	  display: flex !important;
+	  -webkit-box-orient: horizontal;
+	  -webkit-box-direction: normal;
+	  -webkit-flex-direction: row;
+		  -ms-flex-direction: row;
+			  flex-direction: row;
+	  -webkit-box-align: center;
+	  -webkit-align-items: center;
+		  -ms-flex-align: center;
+			  align-items: center;
+	  color: rgba(255, 255, 255, 0.56)!important;
+	  font-weight: 500;
+	}
+	.drawer-navigation .mdl-navigation__link .material-icons {
+	  font-size: 24px;
+	  color: rgba(255, 255, 255, 0.56);
+	  margin-right: 32px;
+	}
+	
+	.drawer-navigation .mdl-navigation__link:hover {
+	  background-color: #00BCD4!important;
+	  color: #37474F!important;
+	}
+  
+
+
+    /* When the searchgroup expand in mobile, the input will hide the title (instead of expanding only on the right)  */
+    .navbar-title {
+        width:0;
+    }
+
+    #searchgroup {
+      background: white;
+      background-clip: content-box;
+      }
+
+    /*Selection-related styles*/
+    .select .indicationsTransport:hover, .select .indicationsTransport.selected {
+        background-color: #eee;
+    }

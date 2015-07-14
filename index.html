@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Déplacez vous dans Lyon facilement !">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>RocketLyon</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Lato:700' rel='stylesheet' type='text/css'>
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="lib/material.min.css"><!-- the "component library" google's Material Design Lite http://www.getmdl.io/ -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <!-- navbar -->
+        <header class="mdl-layout__header mdl-color--white mdl-color--grey-100 mdl-color-text--grey-600">
+            <div class="mdl-layout__header-row">
+                <img src="images/rocket64.png" class="navbar-icon">
+                <span class="mdl-layout-title navbar-title">RocketLyon</span>
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable" id="searchgroup">
+                    <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                        <i class="material-icons">search</i>
+                    </label>
+                    <div class="mdl-textfield__expandable-holder">
+                        <input class="mdl-textfield__input" type="text" id="search" />
+                        <label class="mdl-textfield__label" for="search">Rechercher un arrêt</label>
+                    </div>
+                </div>
+                <div class="mdl-tooltip" for="searchgroup">Recherchez un arrêt</div>
+                <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" id="hdrbtn">
+                    <i class="material-icons">more_vert</i>
+                </button>
+                <ul class="mdl-menu mdl-js-menu mdl-js-ripple-effect mdl-menu--bottom-right" for="hdrbtn">
+                    <li class="mdl-menu__item">A propos</li>
+                    <li class="mdl-menu__item">Signaler un bug</li>
+                </ul>
+            </div>
+        </header>
+        <!-- navbar end -->
+        <!-- drawer - left-side menu -->
+        <div class="mdl-layout__drawer mdl-color--blue-grey-900 mdl-color-text--blue-grey-50">
+
+            <img src="images/rocket64.png" class="drawer-icon">
+            <span class="mdl-layout-title drawer-title">RocketLyon</span>
+            <nav class="drawer-navigation mdl-navigation mdl-color--blue-grey-800">
+                <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">home</i>Accueil</a>
+                <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">explore</i>Autour de moi</a>
+                <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">stars</i>Arrêts favoris</a>
+                <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">navigation</i>Itinéraire</a>
+                <a class="mdl-navigation__link" href=""><i class="mdl-color-text--blue-grey-400 material-icons">help_outline</i>Aide</a>
+            </nav>
+        </div>
+        <!-- drawer end -->
+        <!-- body -->
+        <main class="mdl-layout__content mdl-color--grey-100">
+            <div class="mdl-grid" id="body">
+
+            </div>
+        </main>
+        <!-- body end-->
+    </div>
+    <script src="lib/material.min.js"></script><!-- the "component library" google's Material Design Lite http://www.getmdl.io/ -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script><!-- google maps API (unavailable offline) https://developers.google.com/maps/documentation/javascript/ -->
+    <script src="lib/jquery-2.1.4.min.js"></script><!-- jquery (could be replaced by zepto ?) https://jquery.com/ -->
+    <script src="lib/doT.min.js"></script><!-- dot.js : templating for cardTemplate.js http://olado.github.io/doT/ -->
+    <script src="model.js"></script><!-- Load ajax data -->
+    <script src="script.js"></script><!-- Manage page behavior-->
+    <script src="cardsScript.js"></script><!-- Manage cards (cardTemplate.html) behavior-->
+</body>
+</html>

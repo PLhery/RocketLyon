@@ -1,0 +1,54 @@
+<!-- The template of each card, transformed by dot.js http://olado.github.io/doT/-->
+<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--12-col mdl-grid" longitude="{{=it.long/1000000}}" latitude="{{=it.lat/1000000}}" >
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">{{=it.nom}} {{? it.distance!=undefined }}<span class="mdl-card__subtitle-text">à {{? it.distance>1000 }} {{=Math.round(it.distance/100)/10}} km {{??}} {{=Math.round(it.distance)}} m {{?}}{{?}}</span></h2>
+    </div>
+    <div class="mdl-card__supporting-text">
+
+
+        {{~it.lignes:ligne:i}}
+        <div class="indicationsTransport" longitude="{{=ligne.long/1000000}}" latitude="{{=ligne.lat/1000000}}" titre="{{=ligne.ligne}} vers {{=ligne.direction}}" lineID="{{=ligne.lineID}}" transpID="{{=i}}" stopID="{{=ligne.stopID}}">
+            <div class="nomTransport">
+                {{? ligne.mode == 1}}<!--metro-->
+                <div class="lettre">M</div><div class="numero" {{?ligne.couleur!=""}} style="background-color:#{{=ligne.couleur.substring(3)}}" {{?}}>{{=ligne.ligne}}</div>
+                {{?? ligne.mode == 2}}<!--funiculaire-->
+                <div class="lettre">{{=ligne.ligne.charAt(0)}}</div><div class="numero">{{=ligne.ligne.charAt(1)}}</div>
+                {{?? ligne.mode == 3}}<!--tram-->
+                <div class="lettre">{{=ligne.ligne.charAt(0)}}</div><div class="numero">{{=ligne.ligne.charAt(1)}}</div>
+                {{?? ligne.mode == 4}}<!--principaux bus-->
+                <div class="lettre">{{=ligne.ligne.charAt(0)}}</div><div class="numero bus">{{=ligne.ligne.substring(1)}}</div>
+                {{??}}<!--bus secondaires-->
+                <div class="lettre bus">BUS</div><div class="numero bus secondaire">{{=ligne.ligne}}</div>
+                {{?}}
+
+                <h4>{{=ligne.direction}}</h4>
+            </div>
+            <div class="attente">
+                <div class="numberCircle bold attente1" id="attente1-{{=it.id}}-{{=ligne.stopID}}-{{=i}}">.</div>
+                <div class="mdl-tooltip" for="attente1-{{=it.id}}-{{=ligne.stopID}}-{{=i}}">attente avant prochain <br/>tram (minutes)</div>
+                <div class="numberCircle attente2">.</div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        {{~}}
+
+        <div class="moreInfo"></div>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Horaires
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+            Plan
+        </a>
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect streetview">
+            Street view
+        </a>
+    </div>
+    <div class="mdl-card__menu">
+        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect favoris" id="favoris-{{=it.id}}">
+            <i class="material-icons">star_border</i>
+        </button>
+        <div class="mdl-tooltip" for="favoris-{{=it.id}}">Ajouter aux favoris <br/>(bientôt)</div>
+    </div>
+</div>
