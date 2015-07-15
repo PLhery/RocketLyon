@@ -3,6 +3,8 @@ getmdl.io based web public transport app (for Lyon, France - TCL ), for PhoneGap
 
 ![screenshot](http://i.imgur.com/qT5VCBW.jpg)
 
+Live demo : http://paul-louis.me/RocketLyon
+
 ## What works
   - Web app
    - [X] Search nearest stations
@@ -42,8 +44,14 @@ The current google play TCL ("Transports en Communs Lyonnais") app https://play.
 
 You can do anything unchecked on the todo list. If I'm doing one of those thing, I check it on the todo list. (and put it on "what work" when finished) - so fork the project, and when done send me a pull request
 
+## Libs
+
+doT is licensed under the MIT License https://github.com/olado/doT -  template engine
+jQuery is licensed under the MIT License https://github.com/jquery/jquery -  could be replaced by zepto later ?
+getmdl.io © Google, 2015. Licensed under an Apache-2 license. https://github.com/google/material-design-lite - Google's library of material design components
+
 LOGO by Anshul Dhiman https://www.iconfinder.com/icons/438790/boost_rocket_space_startup_icon 
-licence License: Creative Commons (Attribution 3.0 Unported) 
+License: Creative Commons (Attribution 3.0 Unported) 
 
 We need to create one for the project (following those guidelines https://www.google.com/design/spec/style/icons.html )
 
