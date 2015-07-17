@@ -1,4 +1,4 @@
-package com.insa.rocketlyon.view;
+package com.insa.rocketlyonandroid.view;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;

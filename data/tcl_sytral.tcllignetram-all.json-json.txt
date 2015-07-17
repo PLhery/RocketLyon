@@ -1,0 +1,5 @@
+Accès aux données de la couche : 
+https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcllignetram/all.json
+
+Description de la structure de la couche :
+https://download.data.grandlyon.com/ws/rdata/tcl_sytral.tcllignetram.json

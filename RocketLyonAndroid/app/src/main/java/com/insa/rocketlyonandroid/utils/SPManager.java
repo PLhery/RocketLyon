@@ -1,4 +1,4 @@
-package com.insa.rocketlyon.utils;
+package com.insa.rocketlyonandroid.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;

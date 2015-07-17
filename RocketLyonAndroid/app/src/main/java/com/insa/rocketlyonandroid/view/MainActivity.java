@@ -1,4 +1,4 @@
-package com.insa.rocketlyon.view;
+package com.insa.rocketlyonandroid.view;
 
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
@@ -12,7 +12,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.insa.rocketlyon.R;
-import com.insa.rocketlyon.utils.SPManager;
+import com.insa.rocketlyonandroid.utils.SPManager;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
