@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView
+    android:id="@+id/arretitem_container"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="5dp"
+    card_view:cardCornerRadius="5dp"
+    android:layout_marginLeft="@dimen/feed_item_margin"
+    android:layout_marginRight="@dimen/feed_item_margin"
+    android:layout_marginTop="@dimen/feed_item_margin"
+    android:layout_marginBottom="@dimen/feed_item_margin"
+    android:focusable="false"
+    android:elevation="10dp"
+    android:translationZ="0dp"
+    android:background="@color/feed_bg"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white"
+            android:paddingLeft="@dimen/feed_item_margin"
+            android:paddingRight="@dimen/feed_item_margin"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/arret_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Z.A Givors Ouest"
+                    android:textSize="20sp"
+                    android:padding="5dp"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/arret_distance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="à 1721.4 km"
+                    android:textSize="10sp"
+                    android:padding="5dp"
+                    android:gravity="center"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@+id/arret_title" />
+
+                <ImageView
+                    android:id="@+id/arret_favorite"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_star_border_white_48dp"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
+                    android:padding="5dp" />
+
+
+            </RelativeLayout>
+
+            <ListView
+                android:id="@+id/list_lignes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <View
+                android:layout_height="1dp"
+                android:layout_width="wrap_content"
+                android:background="@color/divider"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button style="@style/customButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Horaires"
+                    android:id="@+id/button_timetable" />
+
+                <Button style="@style/customButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Plan"
+                    android:id="@+id/button_map" />
+
+                <Button style="@style/customButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Street View"
+                    android:id="@+id/button_streetview" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+</android.support.v7.widget.CardView>

@@ -11,4 +11,8 @@
         <item name="android:textColorPrimary">@color/primary_text</item>
     </style>
 
+    <style name="customButton" parent="Base.Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:textColor">@color/primary_dark</item>
+    </style>
+
 </resources>

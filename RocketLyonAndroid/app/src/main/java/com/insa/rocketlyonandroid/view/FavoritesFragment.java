@@ -7,8 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.insa.rocketlyon.R;
+import com.insa.rocketlyonandroid.utils.BaseFragment;
 
-public class FavoritesFragment extends Fragment {
+public class FavoritesFragment extends BaseFragment {
 
     public FavoritesFragment() {
     }

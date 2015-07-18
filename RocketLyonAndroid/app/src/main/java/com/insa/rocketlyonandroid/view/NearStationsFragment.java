@@ -7,8 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.insa.rocketlyon.R;
+import com.insa.rocketlyonandroid.utils.BaseFragment;
 
-public class NearStationsFragment extends Fragment {
+public class NearStationsFragment extends BaseFragment {
 
     public NearStationsFragment() {
     }
