@@ -41,5 +41,3 @@ while ($row = $results->fetchArray()) {
 //And we generate a .json with it
 header('Content-Type: application/json');
 echo json_encode($stopzone);
-
-?>

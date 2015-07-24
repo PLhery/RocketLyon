@@ -5,9 +5,9 @@
 loadModel(function() { //When the data stations.json is loaded
 
     $("#search").on('input', function() { //If we change the search request, we refresh the request
-        location.hash=$("#search").val(); //We refresh the hash of the website
+        location.hash=$(this).val(); //We refresh the hash of the website
         $("#body").html("");
-        var stops = searchStop($("#search").val()); //We select all stops containing the search value
+        var stops = searchStop($(this).val()); //We select all stops containing the search value
         jQuery.each(stops, function( key, arret ) {
             $("#body").append(stopToCard(arret)); //We generate the cards and add them to the site
         });

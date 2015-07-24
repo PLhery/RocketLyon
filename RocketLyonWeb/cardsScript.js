@@ -3,7 +3,7 @@
  * Created by MrPointVirgule on 09/07/2015.
  */
 var pano;
-var markers=new Array();
+var markers=[];
 var selectedMarker;
 var infowindow;
 
@@ -13,7 +13,7 @@ var infowindow;
 function refreshCardsEvents()
 {
     pano=null; //Contains street view panorama
-    markers=new Array(); //Contains markers at each stop
+    markers=[]; //Contains markers at each stop
     selectedMarker=null; //what marker is now selected
     infowindow=null; //Contains the opened "infowindow" (popup on the map)
 
@@ -36,7 +36,7 @@ function refreshCardsEvents()
             if(pano) { //If there is already an opened panorama, we close it
                 $("a.streetview:contains(cacher)").click();
                 pano=null;
-                markers=new Array();
+                markers=[];
             }
 
             $(this).text("cacher"); //text "Hide"
@@ -127,7 +127,7 @@ function select(stopCard, id) {
         });
         infowindow.open(pano,markers[id]);
 
-        google.maps.event.addListener(infowindow, 'closeclick', function(event) { //If we close the infowindow, we unselect the stop
+        google.maps.event.addListener(infowindow, 'closeclick', function() { //If we close the infowindow, we unselect the stop
             markers[selectedMarker].setAnimation(null);
             stopCard.children().children(".indicationsTransport.selected").removeClass("selected");
             selectedMarker=undefined;
@@ -139,7 +139,7 @@ function select(stopCard, id) {
  * Load the "time before next train" (in .numberCircle)
  */
 function refreshTime() {
-    var stops = new Array(); //List of all the stops IDs
+    var stops = []; //List of all the stops IDs
     $(".indicationsTransport").each(function()  {
         stops.push($(this).attr("stopID"));
     });
@@ -149,8 +149,8 @@ function refreshTime() {
 
         $(".indicationsTransport").each(function()  { //each line
 
-            if(data.DATA[$(this).attr("stopID")] && stations.DATA[$(this).attr("stopID")][$(this).attr("lineID")]) { //If we have the data we wanted from the API
-                pas1 = data.DATA[$(this).attr("stopID")][$(this).attr("lineID")][0].passage1; //The data returned for next train
+            if(data.DATA[$(this).attr("stopID")] && data.DATA[$(this).attr("stopID")][$(this).attr("lineID")]) { //If we have the data we wanted from the API
+                var pas1 = data.DATA[$(this).attr("stopID")][$(this).attr("lineID")][0].passage1; //The data returned for next train
                 if(pas1=="Proche") //If it's close
                     $(this).children().children(".attente1").html('<i class="material-icons">directions_bus</i>'); //We put a tram icon
                 else if(pas1.indexOf("h") > 0) //If it's in more than one hour (so the return format is e.g "20h45")
@@ -162,7 +162,7 @@ function refreshTime() {
                     $(this).children().children(".attente1").text(pas1);
                 }
 
-                pas2 = data.DATA[$(this).attr("stopID")][$(this).attr("lineID")][0].passage2; //Same for the second train
+                var pas2 = data.DATA[$(this).attr("stopID")][$(this).attr("lineID")][0].passage2; //Same for the second train
                 if(pas2) {
                     if (pas2 == "Proche") //If it's close
                         $(this).children().children(".attente2").text("P");
