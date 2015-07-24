@@ -1,0 +1,1 @@
+https://download.data.grandlyon.com/wfs/rdata?SERVICE=WFS&VERSION=2.0.0&outputformat=GEOJSON&maxfeatures=30&request=GetFeature&typename=tcl_sytral.tclarret&SRSNAME=urn:ogc:def:crs:EPSG::4171
