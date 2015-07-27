@@ -81,5 +81,20 @@ function stopByName(name) {
  * @returns the HTML card -> cardTemplate.html
  */
 function stopToCard(stationData) {
+    stationData.lignes.forEach(function(e, i) {
+        switch (e.mode) {
+            case 1:
+                e.modeString = "métro";
+                break;
+            case 2:
+                e.modeString = "funiculaire";
+                break;
+            case 3:
+                e.modeString = "tram";
+                break;
+            default:
+                e.modeString = "bus";
+        }
+    });
     return card(stationData);
 }
