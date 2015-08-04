@@ -1,60 +1,54 @@
 package com.insa.rocketlyonandroid.models;
 
-import java.util.ArrayList;
+import android.location.Location;
+
+import com.google.gson.annotations.SerializedName;
 
 public class Ligne {
-
-    private String code;
-    private ArrayList<Arret> arrets;
+    @SerializedName("lineId")
+    private String lineId;
+    @SerializedName("ligne")
+    private String ligne;
+    @SerializedName("stopId")
+    private String stopId;
+    @SerializedName("direction")
+    private String direction;
+    @SerializedName("mode")
+    private int mode;
+    @SerializedName("lat")
+    private double latitude;
+    @SerializedName("long")
+    private double longitude;
     private String nom;
-    private Sens sens;
-    private Type type;
 
     public Ligne() {
     }
 
-    public String getId() {
-        return this.code;
+    public Type getType() {
+        switch (mode) {
+            case 1:
+                return Type.TRAMWAY;
+            case 2:
+                return Type.BUS;
+            case 3:
+                return Type.METRO;
+            case 4:
+                return Type.FUNICULAIRE;
+            default:
+                return null;
+        }
     }
 
-    public void setId(String code) {
-        this.code = code;
-    }
+    public Location getLocation() {
+        Location l = new Location("");
+        l.setLatitude(latitude);
+        l.setLongitude(longitude);
 
-    public ArrayList<Arret> getArrets() {
-        return this.arrets;
-    }
-
-    public void setStations(ArrayList<Arret> arrets) {
-        this.arrets = arrets;
-    }
-
-    public String getNom() {
-        return this.nom;
+        return l;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public Sens getSens() {
-        return this.sens;
-    }
-
-    public void setSens(Sens sens) {
-        this.sens = sens;
-    }
-
-    public Type getType() {
-        return this.type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
-    }
-
-    private enum Sens {
-        ALLER, RETOUR
     }
 
     private enum Type {
