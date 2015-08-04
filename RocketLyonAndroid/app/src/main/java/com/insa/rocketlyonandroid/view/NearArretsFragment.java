@@ -16,17 +16,19 @@ import com.insa.rocketlyonandroid.utils.BaseFragment;
 import com.insa.rocketlyonandroid.utils.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import trikita.log.Log;
 
-public class HomeFragment extends BaseFragment implements ArretsView {
+public class NearArretsFragment extends BaseFragment implements ArretsView {
     @Bind(R.id.recyclerView) RecyclerView rv;
     private ArretsListAdapter arretsListAdapter;
     private Location location;
 
-    public HomeFragment() {
+    public NearArretsFragment() {
     }
 
     @Override
@@ -35,17 +37,31 @@ public class HomeFragment extends BaseFragment implements ArretsView {
         getNewLocation();
 
         ArrayList<Arret> arretsList = Utils.loadArretsFromFile(mActivity);
+        orderByDistance(arretsList);
         arretsListAdapter = new ArretsListAdapter((MainActivity) mActivity, this, arretsList);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_home, container, false);
+        View v = inflater.inflate(R.layout.fragment_neararrets, container, false);
         ButterKnife.bind(this, v);
         initRecyclerView();
 
         return v;
+    }
+
+    private void orderByDistance(ArrayList<Arret> arretsList) {
+        Collections.sort(arretsList, new Comparator<Arret>() {
+            @Override
+            public int compare(Arret ar1, Arret ar2) {
+                float d1 = getLocation().distanceTo(ar1.getLocation());
+                float d2 = getLocation().distanceTo(ar2.getLocation());
+                if (d1==d2) return 0;
+                else if (d1<d2) return -1;
+                else return 1;
+            }
+        });
     }
 
     public Location getNewLocation() {

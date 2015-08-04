@@ -63,6 +63,6 @@ public class Utils {
 
     public static ArrayList<Arret> parseJson(String json) {
         Gson gson = new GsonBuilder().create();
-        return gson.fromJson(json, ApiResponse.class);
+        return gson.fromJson(json, ApiResponse.class).getArrets();
     }
 }
