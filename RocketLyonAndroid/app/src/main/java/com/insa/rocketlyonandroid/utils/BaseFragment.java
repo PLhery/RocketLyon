@@ -26,6 +26,5 @@ public abstract class BaseFragment extends Fragment {
     public void onStop() {
         super.onStop();
         Log.d(mActivity.getClass().toString());
-        //VolleySingleton.getInstance().getRequestQueue().cancelAll(getClass().toString());
     }
 }
