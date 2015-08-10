@@ -1,12 +1,12 @@
 package com.insa.rocketlyonandroid.utils;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.insa.rocketlyonandroid.models.ApiResponse;
 import com.insa.rocketlyonandroid.models.Arret;
-import com.insa.rocketlyonandroid.models.Ligne;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -23,30 +23,13 @@ public class Utils {
         return new Random().nextInt((max - min) + 1) + min;
     }
 
-    public static ArrayList<Arret> createFakeData() {
-        ArrayList<Arret> arrets = new ArrayList<>();
-        ArrayList<Ligne> lignes;
-        Ligne ligne;
-
-        for (int i = 0; i < 10; i++) {
-            Arret arret = new Arret();
-            arret.setNom("Arret" + (i + 1));
-            lignes = new ArrayList<>();
-            for (int j = 0; j < Utils.randInt(1, 5); j++) {
-                ligne = new Ligne();
-                ligne.setNom("Ligne" + (i + 1));
-                lignes.add(ligne);
-            }
-            arret.setLignes(lignes);
-            arrets.add(arret);
-        }
-
-        return arrets;
+    public static void showToast(final Context context, String msg) {
+        Toast toast = Toast.makeText(context, msg, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     public static ArrayList<Arret> loadArretsFromFile(Context ctx) {
-        ArrayList<Arret> arretsList = new ArrayList<>();
-        String json = null;
+        String json;
         try {
             InputStream is = ctx.getAssets().open("stations.json");
             int size = is.available();

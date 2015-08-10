@@ -5,18 +5,12 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.provider.Settings;
-
-import java.io.IOException;
-import java.util.List;
-import java.util.Locale;
 
 import trikita.log.Log;
 
@@ -26,6 +20,8 @@ public class GPSTracker extends Service implements LocationListener {
     private static final long TIME = 30000;
     // Minimum distance fluctuation for next update (in meters)
     private static final long DISTANCE = 20;
+    // Location and co-ordinates coordinates
+    public static Location mLocation;
     // saving the context for later use
     private final Context mContext;
     // Declaring a Location Manager
@@ -36,8 +32,6 @@ public class GPSTracker extends Service implements LocationListener {
     private boolean isNetworkEnabled = false;
     // if Location co-ordinates are available using GPS or Network
     private boolean isLocationAvailable = false;
-    // Location and co-ordinates coordinates
-    private Location mLocation;
     private double mLatitude;
     private double mLongitude;
     private double mAltitude;
@@ -49,12 +43,16 @@ public class GPSTracker extends Service implements LocationListener {
         mLocationManager = (LocationManager) mContext.getSystemService(LOCATION_SERVICE);
     }
 
-    public boolean isLocationAvailable() {
-        return isLocationAvailable;
+    public static Location getLocation() {
+        return mLocation;
     }
 
-    public void setIsLocationAvailable(boolean isLocationAvailable) {
-        this.isLocationAvailable = isLocationAvailable;
+    public static float calculateDistance(Location l1, Location l2) {
+        return l1.distanceTo(l2) / 1000;
+    }
+
+    public boolean isLocationAvailable() {
+        return isLocationAvailable;
     }
 
     /**
@@ -62,7 +60,7 @@ public class GPSTracker extends Service implements LocationListener {
      *
      * @return Location or null if no location is found
      */
-    public Location getLocation() {
+    public void updateLocation() {
         try {
 
             // Getting GPS status
@@ -84,7 +82,6 @@ public class GPSTracker extends Service implements LocationListener {
                         mBearing = mLocation.getBearing();
                         isLocationAvailable = true; // setting a flag that
                         // location is available
-                        return mLocation;
                     }
                 }
             }
@@ -109,7 +106,6 @@ public class GPSTracker extends Service implements LocationListener {
                         mBearing = mLocation.getBearing();
                         isLocationAvailable = true; // setting a flag that
                         // location is available
-                        return mLocation;
                     }
                 }
             }
@@ -126,123 +122,6 @@ public class GPSTracker extends Service implements LocationListener {
         // if reaching here means, location was not available, so setting the
         // flag as false
         isLocationAvailable = false;
-        return null;
-    }
-
-    /**
-     * Gives you complete address of the location
-     *
-     * @return complete address in String
-     */
-    public String getLocationAddress() {
-
-        if (isLocationAvailable) {
-            Geocoder geocoder = new Geocoder(mContext, Locale.getDefault());
-            // Get the current location from the input parameter list
-            // Create a list to contain the result address
-            List<Address> addresses;
-            try {
-                /*
-				 * Return 1 address.
-				 */
-                addresses = geocoder.getFromLocation(mLatitude, mLongitude, 1);
-            } catch (IOException e1) {
-                e1.printStackTrace();
-                return ("IO Exception trying to get address:" + e1);
-            } catch (IllegalArgumentException e2) {
-                // Error message to post in the log
-                String errorString = "Illegal arguments "
-                        + Double.toString(mLatitude) + " , "
-                        + Double.toString(mLongitude)
-                        + " passed to address service";
-                e2.printStackTrace();
-                return errorString;
-            }
-            // If the reverse geocode returned an address
-            if (addresses != null && addresses.size() > 0) {
-                // Get the first address
-                Address address = addresses.get(0);
-				/*
-				 * Format the first line of address (if available), city, and
-				 * country name.
-				 */
-                String addressText = String.format(
-                        "%s, %s, %s",
-                        // If there's a street address, add it
-                        address.getMaxAddressLineIndex() > 0 ? address.getAddressLine(0) : "",
-                        // Locality is usually a city
-                        address.getLocality(),
-                        // The country of the address
-                        address.getCountryName());
-                // Return the text
-                return addressText;
-            } else {
-                return "No address found.";
-            }
-        } else {
-            return "Location not available.";
-        }
-
-    }
-
-    /**
-     * get latitude
-     *
-     * @return latitude in double
-     */
-    public double getLatitude() {
-        if (mLocation != null) {
-            mLatitude = mLocation.getLatitude();
-        }
-        return mLatitude;
-    }
-
-    /**
-     * get longitude
-     *
-     * @return longitude in double
-     */
-    public double getLongitude() {
-        if (mLocation != null) {
-            mLongitude = mLocation.getLongitude();
-        }
-        return mLongitude;
-    }
-
-    /**
-     * get altitude
-     *
-     * @return altitude in double
-     */
-    public double getAltitude() {
-        if (mLocation != null) {
-            mAltitude = mLocation.getAltitude();
-        }
-        return mAltitude;
-    }
-
-    /**
-     * get accuracy
-     *
-     * @return accuracy in float
-     */
-    public float getAccuracy() {
-        if (mLocation != null) {
-            mAccuracy = mLocation.getAccuracy();
-        }
-        return mAccuracy;
-    }
-
-    /**
-     * get bearing
-     *
-     * @return bearing in float
-     */
-    public float getBearing() {
-        if (mLocation != null) {
-            mBearing = mLocation.getBearing();
-        }
-        return mBearing;
     }
 
     /**

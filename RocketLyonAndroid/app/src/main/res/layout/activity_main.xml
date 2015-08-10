@@ -1,9 +1,9 @@
 <android.support.v4.widget.DrawerLayout
+    android:id="@+id/drawer_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/drawer_layout">
+    android:layout_height="match_parent">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,11 +12,11 @@
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="4dp"
             android:minHeight="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp" />
+            android:theme="@style/ToolbarStyle"/>
 
         <FrameLayout
             android:id="@+id/container"
@@ -29,10 +29,10 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/accent"
-        app:itemIconTint="@color/secondary_text"
-        app:itemTextColor="@color/secondary_text"
+        android:background="@color/nav_primary"
         app:headerLayout="@layout/drawer_header"
+        app:itemIconTint="@color/nav_icons"
+        app:itemTextColor="@color/nav_icons"
         app:menu="@menu/drawer" />
 
 </android.support.v4.widget.DrawerLayout>

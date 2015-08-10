@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.insa.rocketlyon.R;
 import com.insa.rocketlyonandroid.models.Arret;
+import com.insa.rocketlyonandroid.services.GPSTracker;
 import com.insa.rocketlyonandroid.view.ArretsView;
 import com.insa.rocketlyonandroid.view.MainActivity;
 
@@ -34,11 +35,6 @@ public class ArretsListAdapter extends RecyclerView.Adapter<ArretsListAdapter.Vi
         this.activity = activity;
         this.arview = arview;
         this.arrets = arrets;
-    }
-
-    /* Refreshes the newsfeed in a proper way */
-    public void refresh() {
-        notifyDataSetChanged();
     }
 
     // Assigns the feeditem.xml to the viewholder
@@ -63,8 +59,9 @@ public class ArretsListAdapter extends RecyclerView.Adapter<ArretsListAdapter.Vi
             holder.arretTitle.setVisibility(View.GONE);
         }
 
-        Log.d(arret.getLocation());
-        float distance = calculateDistance(arret.getLocation(), arview.getLocation());
+        Location currLocation = GPSTracker.getLocation();
+        Log.d(currLocation);
+        float distance = GPSTracker.calculateDistance(arret.getLocation(), currLocation);
         holder.arretDistance.setText(String.format("%.2f", distance) + "km");
 
         holder.lignesList.setAdapter(new LignesListAdapter(activity, arret.getLignes()));
@@ -98,10 +95,6 @@ public class ArretsListAdapter extends RecyclerView.Adapter<ArretsListAdapter.Vi
     @Override
     public int getItemCount() {
         return arrets.size();
-    }
-
-    private float calculateDistance(Location l1, Location l2) {
-        return l1.distanceTo(l2) / 1000;
     }
 
     /* Assigns every view from feeditem.xml to a view in NewsfeedAdapter */
