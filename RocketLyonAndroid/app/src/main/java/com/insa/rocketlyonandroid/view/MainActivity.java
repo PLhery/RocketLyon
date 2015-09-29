@@ -1,11 +1,11 @@
 package com.insa.rocketlyonandroid.view;
 
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,12 +31,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
         setupToolbar();
         setupNavDrawer();
+        checkFirstUser();
 
-        SPManager.clear(this);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
+        }
+    }
+
+    private void checkFirstUser() {
         boolean oldUser = SPManager.load(this, "FIRST_USER");
-        Log.d(oldUser);
         if(!oldUser) {
             oldUser = true;
             new Handler().postDelayed(new Runnable() {
@@ -47,18 +53,12 @@ public class MainActivity extends AppCompatActivity {
             }, DRAWER_CLOSE_FIRST_USER_DELAY_MS);
             SPManager.save(this, oldUser, "FIRST_USER");
         }
-
-        if (savedInstanceState == null) {
-            // Add the fragment on initial activity setup
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new HomeFragment()).commit();
-        }
     }
 
     private void setupToolbar() {
         if (toolbar != null) {
             setSupportActionBar(toolbar);
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            //toolbar.setNavigationIcon(R.drawable.ic_drawer);
         }
     }
 
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.container, new FavoritesFragment()).commit();
                 break;
             case R.id.navigation_item_3:
-                getSupportFragmentManager().beginTransaction().replace(R.id.container, new NearStationsFragment()).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.container, new NearArretsFragment()).commit();
                 break;
             default:
                 Log.d("Clickiti.");

@@ -2,40 +2,39 @@ package com.insa.rocketlyonandroid.models;
 
 import android.location.Location;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 
 public class Arret {
-
+    @SerializedName("id")
     private int id;
+    @SerializedName("nom")
     private String nom;
-    private Location location;
+    @SerializedName("long")
+    private double longitude;
+    @SerializedName("lat")
+    private double latitude;
+    @SerializedName("lignes")
     private ArrayList<Ligne> lignes;
 
     public Arret() {
     }
 
-    public int getId() {
-        return this.id;
-    }
+    public Location getLocation() {
+        Location l = new Location("");
+        l.setLatitude(latitude);
+        l.setLongitude(longitude);
 
-    public void setId(int id) {
-        this.id = id;
+        return l;
     }
 
     public String getNom() {
-        return this.nom;
+        return nom;
     }
 
     public void setNom(String nom) {
         this.nom = nom;
-    }
-
-    public Location getLocation() {
-        return this.location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
     }
 
     public ArrayList<Ligne> getLignes() {
