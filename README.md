@@ -3,7 +3,7 @@ getmdl.io based web+android public transport app (for Lyon, France - TCL ), adap
 
 ![screenshot](http://i.imgur.com/qT5VCBW.jpg)
 
-Live demo : http://paul-louis.me/RocketLyon
+Live demo : https://p-l.ninja/RocketLyon
 
 ## What works
   - Web app
@@ -11,6 +11,9 @@ Live demo : http://paul-louis.me/RocketLyon
    - [X] Search nearest stations
    - [X] See stops in street view
   
+  - Android
+   - [X] Display TCL's data
+   - [X] Search nearest stations
 ## Installation
 
 Just install it on you web server, either apache, nginx..
@@ -37,7 +40,6 @@ A java android folder now exists
 - Adapt it to your own city (in new forks ?)
 
 - Web app things
-  - [ ] Find street view bugs
   - [ ] show timetables ("horaires" button)
   - [ ] manage favorites
   - [ ] generate a "map.json" data with line trajectories
@@ -50,7 +52,6 @@ A java android folder now exists
   - [ ] Display TCL's data
   - [ ] Search nearest stations
   - [ ] See stops in street view
-  - [ ] Find street view bugs
   - [ ] show timetables ("horaires" button)
   - [ ] manage favorites
   - [ ] generate a "map.json" data with line trajectories
