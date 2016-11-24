@@ -3,7 +3,7 @@ getmdl.io based web+android public transport app (for Lyon, France - TCL ), adap
 
 ![screenshot](http://i.imgur.com/qT5VCBW.jpg)
 
-Live demo : https://p-l.ninja/RocketLyon
+Live demo : https://projects.plhery.com/RocketLyon/RocketLyonWeb/
 
 ## What works
   - Web app

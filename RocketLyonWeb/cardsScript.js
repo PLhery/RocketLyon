@@ -69,7 +69,7 @@ function refreshCardsEvents()
                     position: new google.maps.LatLng($(this).attr("latitude"), $(this).attr("longitude")),
                     map: pano,
                     animation: google.maps.Animation.DROP,
-                    icon: 'http://mt.google.com/vt/icon/name=icons/spotlight/transit/rail_large.png&scale=1', //tramway icon
+                    icon: 'https://mt.google.com/vt/icon/name=icons/spotlight/transit/rail_large.png&scale=1', //tramway icon
                     title: $(this).attr("titre")
                 });
 
